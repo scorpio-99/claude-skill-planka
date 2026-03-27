@@ -1,6 +1,7 @@
 ---
 name: planka
 description: Manage Planka kanban boards — create, organize, and track project tasks
+argument-hint: overview | board <name>
 ---
 
 Interact with a self-hosted Planka instance. Planka is a Trello-like kanban board.
@@ -37,7 +38,14 @@ Fetch this via WebFetch when you need endpoint details, request/response schemas
 
 ## How to Use
 
-The user will tell you what they want in natural language — e.g. "create a card for Feature X", "show me the board", "move Bug Y to Done", "create a new board".
+The user can talk naturally or use optional shorthand commands:
+
+| Command | Description |
+|---------|-------------|
+| `/planka overview` | Show all projects and boards |
+| `/planka board <name>` | Show a specific board with lists and cards |
+
+These are shortcuts — the user can also just describe what they want freely: "create a card for Feature X", "move Bug Y to Done", "set up a new board with labels", etc.
 
 Understand the intent, look up the right endpoints from the OpenAPI spec if needed, and execute. Always:
 

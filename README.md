@@ -20,27 +20,27 @@ A Claude Code skill for managing [Planka](https://github.com/plankanban/planka) 
 
 ## Usage
 
-Just talk naturally:
+Shorthand commands:
 
 ```
-/planka show me the board
+/planka overview                    # show all projects and boards
+/planka board "My Project"          # show a specific board with lists and cards
+```
+
+Or just talk naturally:
+
+```
 /planka create a card "Fix login bug" in the ToDo list with label Bug
 /planka move "Fix login bug" to In Progress
 /planka add tasks to "Fix login bug": check auth flow, test redirect, update tests
 /planka mark "Fix login bug" as done
-```
-
-The skill fetches the [Planka OpenAPI spec](https://plankanban.github.io/planka/swagger-ui/swagger.json) dynamically, so it stays up to date with the latest API.
-
-## Advanced Examples
-
-```
-/planka set up a board "My Project" with lists ToDo, In Progress, Done and labels Bug, Feature, UI
+/planka set up a board with lists ToDo, In Progress, Done and labels Bug, Feature, UI
 /planka look at board X and create the same structure for a new board
 /planka read the git log and create cards for all completed features
 /planka check all cards for typos and fix them
-/planka show me what changed recently
 ```
+
+The skill fetches the [Planka OpenAPI spec](https://plankanban.github.io/planka/swagger-ui/swagger.json) dynamically, so it stays up to date with the latest API.
 
 ## Requirements
 
