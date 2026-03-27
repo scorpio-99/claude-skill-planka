@@ -51,6 +51,10 @@ Understand the intent, look up the right endpoints from the OpenAPI spec if need
 
 **Finding boards**: Never hardcode IDs. Always list projects first, find boards from the included data, and match by name. Handle `None` values in position/color fields gracefully when sorting or displaying.
 
+**Display formatting**:
+- `overview`: Show projects as headers with boards as bullet points. Include board card count.
+- `board <name>`: Show each list as a section with its cards listed below. For each card show: name, labels (as colored badges), task progress (e.g. 3/5), and description preview if available. Use markdown formatting — headers for lists, bullet points for cards. Skip empty/unnamed system lists (archive, trash).
+
 Always:
 
 - Load env vars before API calls: `source .env 2>/dev/null; source ~/.env 2>/dev/null` — tries project `.env` first, then global `~/.env`, silently skips if missing
