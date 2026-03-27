@@ -61,4 +61,4 @@ Always:
 - Use `curl -sL` (silent + follow redirects)
 - Use `python3 -c "import json; ..."` for safe JSON encoding
 - Ask the user when something is ambiguous (e.g. multiple boards/projects)
-- Confirm before destructive actions (delete board/project)
+- **Always confirm before executing**: describe what you're about to do (e.g. "I'll create a card 'Dark Mode' in Backlog with labels Feature, UI") and wait for the user to approve before making any API calls. This applies to all write operations — create, update, move, delete.
