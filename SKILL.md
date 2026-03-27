@@ -9,10 +9,15 @@ Interact with a self-hosted Planka instance. Planka is a Trello-like kanban boar
 
 ## Setup
 
-Environment variables (in `.env` or shell):
+Required environment variables:
 
 - `PLANKA_URL` — Base URL (e.g. `https://planka.example.com`)
 - `PLANKA_API_KEY` — API key (generated in Planka UI → User Settings)
+
+These can be set in:
+1. The current project's `.env` file (most common)
+2. `~/.env` (global, for cross-project use)
+3. Shell environment (e.g. `~/.bashrc` or `~/.zshrc`)
 
 ## API
 
@@ -36,7 +41,7 @@ The user will tell you what they want in natural language — e.g. "create a car
 
 Understand the intent, look up the right endpoints from the OpenAPI spec if needed, and execute. Always:
 
-- Source `.env` before API calls
+- Load env vars before API calls: check project `.env` first, then `~/.env`, then shell environment. Use: `([ -f .env ] && source .env || [ -f ~/.env ] && source ~/.env)`
 - Use `curl -sL` (silent + follow redirects)
 - Use `python3 -c "import json; ..."` for safe JSON encoding
 - Ask the user when something is ambiguous (e.g. multiple boards/projects)
