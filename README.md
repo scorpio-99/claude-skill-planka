@@ -4,13 +4,17 @@ A Claude Code skill for managing [Planka](https://github.com/plankanban/planka) 
 
 ## Setup
 
-1. Copy the `planka` folder to `~/.claude/skills/planka/`
-2. Set environment variables (in `.env` or shell):
+1. Clone this repo into your Claude Code skills directory:
+   ```bash
+   git clone <repo-url> ~/.claude/skills/claude-skill-planka
+   ```
+   Or copy the folder manually to `~/.claude/skills/`.
 
-```bash
-PLANKA_URL=https://planka.example.com
-PLANKA_API_KEY=your-api-key
-```
+2. Set environment variables (in `.env` or shell):
+   ```bash
+   PLANKA_URL=https://planka.example.com
+   PLANKA_API_KEY=your-api-key
+   ```
 
 3. Generate an API key in Planka: User Settings → API Key
 
