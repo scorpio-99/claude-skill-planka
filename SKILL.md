@@ -49,7 +49,9 @@ These are shortcuts — the user can also just describe what they want freely: "
 
 Understand the intent, look up the right endpoints from the OpenAPI spec if needed, and execute.
 
-**Finding boards**: Never hardcode IDs. Always list projects first, find boards from the included data, and match by name. Handle `None` values in position/color fields gracefully when sorting or displaying.
+**Finding boards**: Never hardcode IDs. Always list projects first, find boards from the included data, and match by name.
+
+**Null safety**: Many Planka fields can be `None`/`null` — name, description, color, position, etc. Always use `or ""`, `or 0`, `(x or "").strip()` patterns in Python code. Never call methods on potentially null values without guarding.
 
 **Display formatting**:
 - `overview`: Show projects as headers with boards as bullet points. Include board card count.
