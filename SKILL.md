@@ -47,7 +47,11 @@ The user can talk naturally or use optional shorthand commands:
 
 These are shortcuts — the user can also just describe what they want freely: "create a card for Feature X", "move Bug Y to Done", "set up a new board with labels", etc.
 
-Understand the intent, look up the right endpoints from the OpenAPI spec if needed, and execute. Always:
+Understand the intent, look up the right endpoints from the OpenAPI spec if needed, and execute.
+
+**Finding boards**: Never hardcode IDs. Always list projects first, find boards from the included data, and match by name. Handle `None` values in position/color fields gracefully when sorting or displaying.
+
+Always:
 
 - Load env vars before API calls: `source .env 2>/dev/null; source ~/.env 2>/dev/null` — tries project `.env` first, then global `~/.env`, silently skips if missing
 - Use `curl -sL` (silent + follow redirects)
