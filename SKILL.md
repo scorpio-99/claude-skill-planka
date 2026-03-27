@@ -41,7 +41,7 @@ The user will tell you what they want in natural language — e.g. "create a car
 
 Understand the intent, look up the right endpoints from the OpenAPI spec if needed, and execute. Always:
 
-- Load env vars before API calls: check project `.env` first, then `~/.env`, then shell environment. Use: `([ -f .env ] && source .env || [ -f ~/.env ] && source ~/.env)`
+- Load env vars before API calls: `source .env 2>/dev/null; source ~/.env 2>/dev/null` — tries project `.env` first, then global `~/.env`, silently skips if missing
 - Use `curl -sL` (silent + follow redirects)
 - Use `python3 -c "import json; ..."` for safe JSON encoding
 - Ask the user when something is ambiguous (e.g. multiple boards/projects)
