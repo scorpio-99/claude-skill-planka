@@ -27,14 +27,30 @@ Base path: `$PLANKA_URL/api/`
 Auth header: `X-Api-Key: $PLANKA_API_KEY`
 
 **Full OpenAPI spec**: https://plankanban.github.io/planka/swagger-ui/swagger.json
-Fetch this via WebFetch when you need endpoint details, request/response schemas, or field names. This is the authoritative source — do not guess endpoints.
+
+### CRITICAL: How to look up endpoints
+
+1. **NEVER guess endpoints.** Always look them up first.
+2. **Do NOT trust WebFetch summaries of the swagger.json.** WebFetch summarizes content and frequently returns incorrect/shortened paths (e.g. `/card-labels` instead of `/cards/{cardId}/card-labels`).
+3. **Instead, fetch the raw JSON and parse it yourself:**
+   ```bash
+   curl -sL https://plankanban.github.io/planka/swagger-ui/swagger.json | python3 -c "
+   import json, sys
+   spec = json.load(sys.stdin)
+   for path, methods in spec.get('paths', {}).items():
+       for method in methods:
+           if method in ('get','post','put','patch','delete'):
+               print(f'{method.upper()} {path}')
+   " | grep -i "SEARCH_TERM"
+   ```
+4. **On 404 errors**: Do NOT retry the same endpoint. Immediately fetch the spec and find the correct path. The server version may differ from the spec -- try path variations (e.g. `/cards/{id}/card-labels` vs `/card-labels`).
 
 ## Key Concepts
 
 - **Hierarchy**: Project → Board → List → Card → Task List → Task
 - **Responses**: `{"item": {...}}` for single, `{"items": [...]}` for collections, related data in `"included"`
 - **Positioning**: Numeric, multiples of 65536. Lower = higher on the board.
-- **Colors** (for lists/labels): `dark-granite`, `lagune-blue`, `orange-peel`, `bright-moss`, `berry-red`, `light-mud`, `midnight-blue`, `light-cocoa`, `summer-sky`, `pumpkin-orange`
+- **Colors** (for lists/labels): e.g. `dark-granite`, `lagoon-blue`, `orange-peel`, `bright-moss`, `berry-red`, `light-mud`, `midnight-blue`, `light-cocoa`, `summer-sky`, `pumpkin-orange`
 
 ## How to Use
 
